@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head th:replace="fragments :: html_head(pageTitle='Login')" />
+<body>
+<div class="container text-center">
+
+
+  <form th:action="@{/register}" method="post" style="max-width: 400px; margin: 0 auto;"  th:object="${userDto}">
+
+
+    <div class="form-group pb-3">
+      <label for="email" th:text="#{registrationPage.login}"></label>
+      <input type="email" name="email" th:field="*{email}" id="email"
+             maxlength="64" class="form-control" aria-describedby="loginHelp">
+    </div>
+
+    <div class="form-group pb-3">
+      <label for="password" th:text="#{registrationPage.password} + ':'"> </label><br>
+      <input type="password" name="password" id="password" maxlength="64"
+             class="form-control" th:field="*{password}">
+    </div>
+
+    <div class="form-group pb-3">
+      <label for="passwordCopy" th:text="#{registrationPage.confirmPassword} + ':'"> </label><br>
+      <input type="password" name="passwordCopy" id="passwordCopy"
+             class="form-control" th:field="*{passwordCopy}">
+    </div>
+
+    <div class="text-center mt-3">
+      <button type="submit" class="btn btn-primary" th:text="#{registrationPage.signUpButton}">
+
+      </button>
+    </div>
+
+  </form>
+</div>
+</body>
+</html>
