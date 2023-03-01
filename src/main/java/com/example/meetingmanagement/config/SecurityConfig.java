@@ -26,7 +26,7 @@ import java.util.Set;
 public class SecurityConfig {
 
     private UserService userService;
-    private static String NameAttributeName = "email";
+    private final static String NameAttributeName = "email";
 
     @Autowired
     public SecurityConfig(@Lazy UserService userService) {
@@ -69,9 +69,7 @@ public class SecurityConfig {
             OAuth2AccessToken accessToken = userRequest.getAccessToken();
             Set<GrantedAuthority> mappedAuthorities = new HashSet<>();
 
-            userService.processOAuthPostLogin(oidcUser.getIdToken().getEmail()).get();
-
-            System.out.println(oidcUser.getClaims());
+            userService.processOAuthPostLogin(oidcUser.getIdToken().getEmail());
 
             oidcUser = new DefaultOidcUser(mappedAuthorities, oidcUser.getIdToken(), oidcUser.getUserInfo(), NameAttributeName);
 
