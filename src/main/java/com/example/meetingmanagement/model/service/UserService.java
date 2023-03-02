@@ -33,6 +33,8 @@ public class UserService implements UserDetailsService {
         User user = new User()
                 .setUsername(userDto.getEmail())
                 .setEmail(userDto.getEmail())
+                .setFirstName(userDto.getFirstName())
+                .setSecondName(userDto.getSecondName())
                 .setPassword(new BCryptPasswordEncoder().encode(userDto.getPassword()))
                 .setRole(roleRepository.findByRoleEnum(Role.RoleEnum.CLIENT));
 

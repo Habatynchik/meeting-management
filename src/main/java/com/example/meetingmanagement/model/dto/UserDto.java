@@ -19,6 +19,14 @@ public class UserDto {
     private String email;
 
     @NotBlank
+    @Size(max = 32)
+    private String firstName;
+
+    @NotBlank
+    @Size(max = 32)
+    private String secondName;
+
+    @NotBlank
     @Size(min = 8, max = 64, message = "sizeOutOfBounds")
     @Pattern(regexp = RegExp.PASSWORD, message = "passwordNotMatchTemplate")
     private String password;

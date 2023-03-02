@@ -27,6 +27,7 @@ public class CustomOidcUserService extends OidcUserService {
         CustomOidcUser newUser = new CustomOidcUser(oidcUser);
 
         String email = oidcUser.getAttributes().get(GOOGLE_KEY_EMAIL).toString();
+
         User user = createUserIfNoExist(email, oidcUser);
         newUser.setRole(user.getRole().getRoleEnum().name());
 
@@ -40,6 +41,8 @@ public class CustomOidcUserService extends OidcUserService {
                     User user = new User()
                             .setUsername(email)
                             .setEmail(email)
+                            .setFirstName(oidcUser.getAttributes().get(GOOGLE_KEY_FIRSTNAME).toString())
+                            .setSecondName(oidcUser.getAttributes().get(GOOGLE_KEY_LASTNAME).toString())
                             .setRole(roleRepository.findByRoleEnum(Role.RoleEnum.CLIENT));
 
                     return userRepository.save(user);

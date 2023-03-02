@@ -26,6 +26,29 @@
              class="form-control" th:field="*{passwordCopy}">
     </div>
 
+    <div class="form-group pb-3">
+      <label for="firstName" th:text="#{registrationPage.firstName} + ':'"> </label><br>
+      <input type="text" name="firstName" th:field="*{firstName}"
+             id="firstName" maxlength="32" class="form-control">
+    </div>
+
+    <div class="alert alert-warning" role="alert"
+         th:if="${#fields.hasErrors('firstName')}"
+         th:text=" #{registrationPage.exception.firstNameSizeOutOfBoundsException}">
+    </div>
+
+
+    <div class="form-group pb-3">
+      <label for="secondName" th:text="#{registrationPage.secondName} + ':'"></label><br>
+      <input type="text" name="secondName" th:field="*{secondName}"
+             id="secondName" maxlength="32" class="form-control">
+    </div>
+
+    <div class="alert alert-warning" role="alert"
+         th:if="${#fields.hasErrors('secondName')}"
+         th:text=" #{registrationPage.exception.secondNameSizeOutOfBoundsException}">
+    </div>
+
     <div class="text-center mt-3">
       <button type="submit" class="btn btn-primary" th:text="#{registrationPage.signUpButton}">
 
