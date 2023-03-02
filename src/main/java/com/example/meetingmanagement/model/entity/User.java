@@ -2,6 +2,7 @@ package com.example.meetingmanagement.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +16,7 @@ import java.util.Collections;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Builder
+@Accessors(chain = true)
 public class User implements UserDetails {
 
     @Id
@@ -32,7 +33,7 @@ public class User implements UserDetails {
     private String email;
 
     @Column(name = "blocked")
-    private Boolean blocked;
+    private Boolean blocked = false;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "role_id", nullable = false)
